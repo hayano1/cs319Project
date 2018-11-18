@@ -1,28 +1,30 @@
 package UI;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
+
 import Mechanics.Game;
 
-public class GuiPanel {
+public class GuiPanel implements KeyListener {
 
 	private ArrayList<GuiButton> buttons;
 	private ArrayList<GuiCheckBox> chkbox;
-	private Color main;
-	private Rectangle clickBox;
+	// private Color main;
+	// private Rectangle clickBox;
 	private Image image;
 
 	public GuiPanel() {
 
-		clickBox = new Rectangle(0, 0, Game.WIDTH, Game.HEIGHT);
+		// clickBox = new Rectangle(0, 0, Game.WIDTH, Game.HEIGHT);
 		buttons = new ArrayList<GuiButton>();
 		chkbox = new ArrayList<GuiCheckBox>();
-		main = new Color(233,161,53);
+		// main = new Color(233, 161, 53);
 	}
 
 	void update() {
@@ -52,11 +54,11 @@ public class GuiPanel {
 
 	void render(Graphics2D g) {
 
-		g.setColor(main);
-		g.fill(clickBox);
+		image = getImage();
+		g.drawImage(image, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 
-		// image = getImage();
-		// g.drawImage(image, 0, 0, null);
+		// g.setColor(main);
+		// g.fill(clickBox);
 
 		for (GuiButton a : buttons) {
 			a.render(g);
@@ -64,10 +66,18 @@ public class GuiPanel {
 		for (GuiCheckBox a : chkbox) {
 			a.render(g);
 		}
+
+	}
+
+	private static Image getImage() {
+		Image image = null;
+		image = new ImageIcon("res/bg.jpg").getImage();
+		return image;
 	}
 
 	public void mousePressed(MouseEvent e) {
 		for (GuiButton a : buttons) {
+
 			a.mousePressed(e);
 		}
 		for (GuiCheckBox a : chkbox) {
@@ -96,10 +106,19 @@ public class GuiPanel {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	private static Image getImage() {
-		Image image = null;
-		image = new ImageIcon("res/bg.jpg").getImage();
-		return image;
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
+
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

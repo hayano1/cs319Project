@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ public class GuiScreen {
 
 	private GuiScreen() {
 		panels = new HashMap<String, GuiPanel>();
+
 	}
 
 	public static GuiScreen getInstance() {
@@ -65,6 +67,19 @@ public class GuiScreen {
 	public void mouseMoved(MouseEvent e) {
 		if (panels.get(currentPanel) != null) {
 			panels.get(currentPanel).mouseMoved(e);
+		}
+
+	}
+
+	public String getCurrentPanel() {
+		// TODO Auto-generated method stub
+		return currentPanel;
+	}
+
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (panels.get(currentPanel) != null) {
+			panels.get(currentPanel).keyPressed(e);
 		}
 
 	}

@@ -17,10 +17,9 @@ public class optionsPanel extends GuiPanel {
 	private int buttonWitdh = 300;
 	private int buttonHeight = 60;
 
-
 	public optionsPanel() {
 		super();
-		
+
 		GuiCheckBox sndchk = new GuiCheckBox(Game.WIDTH / 2 - buttonWitdh, 250,
 				20);
 		GuiCheckBox sndchk2 = new GuiCheckBox(Game.WIDTH / 2 - buttonWitdh,
@@ -31,23 +30,23 @@ public class optionsPanel extends GuiPanel {
 		sndchk.setText("Sound ON/OFF");
 		sndchk2.setText("Music ON/OFF");
 		backButton.setText("BACK");
-		
-		sndchk.addActionListener(new ActionListener(){
+
+		sndchk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(b1==false){
-					//SOUNDS OFF FUNCTION GOES HERE
-				}else{
-					//SOUNDS ON FUNCTION GOES HERE
+				if (b1 == false) {
+					// SOUNDS OFF FUNCTION GOES HERE
+				} else {
+					// SOUNDS ON FUNCTION GOES HERE
 				}
 			}
 		});
-		
-		sndchk2.addActionListener(new ActionListener(){
+
+		sndchk2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(b2==false){
-					//SOUNDS OFF FUNCTION GOES HERE
-				}else{
-					//SOUNDS ON FUNCTION GOES HERE
+				if (b2 == false) {
+					// SOUNDS OFF FUNCTION GOES HERE
+				} else {
+					// SOUNDS ON FUNCTION GOES HERE
 				}
 			}
 		});
@@ -62,11 +61,10 @@ public class optionsPanel extends GuiPanel {
 		add(sndchk2);
 		add(backButton);
 	}
-	
-	
+
 	public void render(Graphics2D g) {
 		super.render(g);
-	
+
 		g.setFont(titleFont);
 		g.setColor(Color.black);
 		g.drawString(Title,
@@ -74,7 +72,5 @@ public class optionsPanel extends GuiPanel {
 						/ 2, 150);
 
 	}
-	
 
-	
 }
