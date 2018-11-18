@@ -22,19 +22,18 @@ public class Inventory {
 		return numOfPieces;
 	}
 	//adds a piece into the inventory
-	public void addPiece(int color, ArrayList<XYCoord> listCoordinates)
+	public void addPiece(Piece newPiece)
 	{
-		Piece newPiece = new Piece(numOfPieces, color, listCoordinates);
+		this.pieces.add(newPiece);
 		numOfPieces++;
-		pieces.add(newPiece);
 	}
 	//gets a piece from the inventory
 	public Piece getPiece(int pieceID)
 	{
-		Piece getPiece = new Piece();
+		Piece getPiece = new Piece(0,0,new ArrayList<XYCoord>());
 		for(int i = 0;i < pieces.size(); i++)
 		{
-			if(pieceID == pieces.get(i).pieceID)
+			if(pieceID == pieces.get(i).getPieceID())
 			{
 				getPiece = pieces.get(i);
 				break;
@@ -43,24 +42,22 @@ public class Inventory {
 		return getPiece;
 	}
 	//removes a piece from the inventory
-	public Piece removePiece(int pieceID)
+	public boolean removePiece(int pieceID)
 	{
-		Piece removedPiece = new Piece();
-		try{
-			for(int i = 0; i < pieces.size(); i++)
+        for(int i = 0; i < pieces.size(); i++)
 			{
-				if(pieceID == pieces.get(i).pieceID)
-				{
-					removedPiece = pieces.get(i);
-					pieces.remove(i);
-					numOfPieces--;
-					break;
-				}
+				if(pieceID == pieces.get(i).getPieceID()) {
+                    pieces.remove(i);
+                    numOfPieces--;
+                    return true;
+                }
 			}
-		}
-		catch(Exception e){
-			System.out.println("Piece ID not found to remove");
-		}
-		return removedPiece;
+		return false;
 	}
+
+	public void print(){
+	    for(int count = 0; count < numOfPieces;count++){
+	        System.out.print(pieces.get(count).getPieceID() + " ");
+        }
+    }
 }
